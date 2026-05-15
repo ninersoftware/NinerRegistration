@@ -11,7 +11,7 @@
             "matches": [
         "*://selfservice.uncc.edu/StudentRegistrationSsb/*"
             ],
-            "js": ["extension/content.js"],
+            "js": ["extension/modal.js", "extension/content.js"],
             "css": ["extension/content.css"]
         }
     ],

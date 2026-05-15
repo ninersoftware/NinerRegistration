@@ -20,7 +20,7 @@ function injectOverview(cell, data, originalName) {
         : `${Math.round(data.wouldTakeAgainPercent)}%`;
     const lowRatings = data.numRatings < 10;
     overview.innerHTML = `
-    <a class="professor-name" href="https://www.ratemyprofessors.com/professor/${data.legacyId}" target="_blank">
+    <a class="professor-name" style="cursor: pointer;">
         <span class="rating-dot" style="background:${ratingColor}"></span>    
         ${originalName} ↗
     </a>
@@ -45,17 +45,13 @@ function injectOverview(cell, data, originalName) {
     `;
     cell.innerHTML = '';
     cell.appendChild(overview);
+
     const link = overview.querySelector('.professor-name');
     link.style.setProperty('color', '#2e6da4', 'important');
 
-    link.addEventListener('blur', () => {
-        link.style.setProperty('color', '#2e6da4', 'important');
-    });
-
-    link.addEventListener('click', () => {
-        setTimeout(() => {
-            link.style.setProperty('color', '#2e6da4', 'important');
-        }, 100);
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        openModal();
     });
 
 
@@ -100,8 +96,9 @@ function injectNotFound(cell, name) {
     cell.innerHTML = '';
     cell.appendChild(overview);
 
-    overview.addEventListener('click', () => {
-    window.open(`https://www.ratemyprofessors.com/search/professors/1253?q=${encodeURIComponent(name)}`, '_blank');
+    overview.addEventListener('click', (event) => {
+        event.preventDefault();
+        openModal();
     });
 
 

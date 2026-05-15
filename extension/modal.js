@@ -4,7 +4,7 @@ function openModal() {
         existingModal.remove();
     }
 
-    const overlay = document.createElementNS('div');
+    const overlay = document.createElement('div');
     overlay.id = 'niner-registration-modal';
     overlay.className = 'niner-modal-overlay';
 
@@ -20,3 +20,20 @@ function openModal() {
     overlay.appendChild(modalContainer);
     document.body.appendChild(overlay);
 } 
+
+function parseCourseRow(clickedElement) {
+    const row = clickedElement.closest('tr');
+    if (!row) {
+        return null;
+    }
+
+    const subject;
+    const courseNumber;
+    const section;
+    const crn;
+    const title;
+    const credits;
+
+    const meetings;
+    const meetingElements;
+}
