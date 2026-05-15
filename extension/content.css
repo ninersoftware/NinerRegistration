@@ -148,3 +148,28 @@
 td[xe-field="instructor"] {
     overflow: visible !important;
 }
+
+.niner-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+}
+
+.niner-modal-container {
+    background: #ffffff;
+    width: 600px;
+    min-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4 px 15px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    position: relative;
+}
