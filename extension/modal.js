@@ -15,17 +15,27 @@ function openModal(clickedElement) {
     const modalContainer = document.createElement('div');
     modalContainer.className = 'niner-modal-container';
 
+    const header = document.createElement('div');
+    header.className = 'niner-modal-header';
+    header.innerHTML = `
+        <div class="niner-modal-title">
+            <span class="niner-modal-prof">${clickedElement.textContent.trim().replace('↗', '').trim()}</span>
+            <span class="niner-modal-course">${courseData.subject} ${courseData.courseNumber} - ${courseData.title} · ${courseData.credits} Credits</span>
+        </div>
+        <button class ="niner-modal-close">✕</button>
+    `;
+
+
+    modalContainer.appendChild(header);
+    overlay.appendChild(modalContainer);
+    document.body.appendChild(overlay);
+
+    header.querySelector('.niner-modal-close').addEventListener('click', () => overlay.remove());
+
     overlay.addEventListener('click', (event) => {
         if (event.target === overlay) {
             overlay.remove();
         }
-    });
-
-    overlay.appendChild(modalContainer);
-    document.body.appendChild(overlay);
-
-    overlay.addEventListener('click', (event) => {
-        if (event.target === overlay) overlay.remove();
     });
 } 
 
