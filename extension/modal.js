@@ -1,4 +1,4 @@
-function openModal(clickedElement) {
+function openModal(clickedElement, rmpData) {
     console.log('openModal fired', clickedElement);
     const existingModal = document.getElementById('niner-registration-modal');
     if (existingModal) {
@@ -25,8 +25,25 @@ function openModal(clickedElement) {
         <button class ="niner-modal-close">✕</button>
     `;
 
+    const body = document.createElement('div');
+    body.className = 'niner-modal-body';
 
+    const rightCol = document.createElement('div');
+    rightCol.className = 'niner-modal-right';
+
+    const rmpUrl = rmpData
+        ? `https://www.ratemyprofessors.com/professor/${rmpData.legacyId}`
+        : `https://www.ratemyprofessors.com/search/professors/1253?q=${encodeURIComponent(clickedElement.textContent.trim().replace('↗', '').trim())}`;
+
+    rightCol.innerHTML = `
+        <a class="niner-btn" href="${rmpUrl}" target="_blank">RateMyProfessors →</a>
+    <a class="niner-btn" href="https://coursicle.com/uncc/courses/${courseData.subject}${courseData.courseNumber}/" target="_blank">Coursicle →</a>
+    `;
+    
+    body.appendChild(rightCol);
+    
     modalContainer.appendChild(header);
+    modalContainer.appendChild(body);
     overlay.appendChild(modalContainer);
     document.body.appendChild(overlay);
 
