@@ -51,7 +51,7 @@ function injectOverview(cell, data, originalName) {
 
     link.addEventListener('click', (event) => {
         event.preventDefault();
-        openModal();
+        openModal(event.target);
     });
 
 
@@ -98,7 +98,7 @@ function injectNotFound(cell, name) {
 
     overview.addEventListener('click', (event) => {
         event.preventDefault();
-        openModal();
+        openModal(event.target);
     });
 
 
