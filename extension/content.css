@@ -190,7 +190,7 @@ td[xe-field="instructor"] {
     width: 600px;
     min-height: 400px;
     border-radius: 8px;
-    box-shadow: 0 4 px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 24px;
     position: relative;
 }
@@ -242,6 +242,23 @@ td[xe-field="instructor"] {
     gap: 16px;
 }
 
+.niner-modal-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    padding-right: 16px;
+}
+
+.niner-grade-placeholder {
+    color: rgba(0,0,0,0.2);
+    font-size: 13px;
+    font-family: 'General-Sans', sans-serif;
+    font-style: italic;
+}
+
 .niner-modal-right {
     display: flex;
     flex-direction: column;
@@ -255,8 +272,8 @@ td[xe-field="instructor"] {
     gap: 8px;
     padding: 10px 14px;
     border-radius: 4px;
-    background: #101820;
-    color: white !important;
+    background: white;
+    color: #0021FF  !important;
     font-size: 13px;
     font-weight: 600;
     text-decoration: none !important;
@@ -277,11 +294,28 @@ td[xe-field="instructor"] {
 }
 
 .niner-btn-coursicle {
-    color: white !important;
+    color: #0B7BCE !important;
     border-color: #0B7BCE;
 }
 
 .niner-btn-coursicle:hover {
     background: #0B7BCE;
     color: white !important;
+}
+
+.niner-btn-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.niner-btn-title {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.niner-btn-sub {
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.7;
 }
