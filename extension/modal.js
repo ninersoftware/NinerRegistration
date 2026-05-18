@@ -1,12 +1,10 @@
 function openModal(clickedElement, rmpData) {
-    console.log('openModal fired', clickedElement);
     const existingModal = document.getElementById('niner-registration-modal');
     if (existingModal) {
         existingModal.remove();
     }
 
     const courseData = parseCourseRow(clickedElement);
-    console.log(courseData);
 
     const overlay = document.createElement('div');
     overlay.id = 'niner-registration-modal';
@@ -15,53 +13,28 @@ function openModal(clickedElement, rmpData) {
     const modalContainer = document.createElement('div');
     modalContainer.className = 'niner-modal-container';
 
+    const meetingLines = courseData.meetings.map(m => {
+        const days = m.days.map(d => d.slice(0,3)).join('/');
+        return `<span class <"niner-modal-meeting">${days} ${m.time} · ${m.building} ${m.room}</span>`;
+    }).join('');
+
+    const rmpUrl = rmpData
+        ? `https://www.ratemyprofessors.com/professor/${rmpData.legacyId}`
+        : `https://www.ratemyprofessors.com/search/professors/1253?q=${encodeURIComponent(clickedElement.textContent.trim().replace('↗', '').trim())}`;
+
     const header = document.createElement('div');
     header.className = 'niner-modal-header';
     header.innerHTML = `
         <div class="niner-modal-title">
             <span class="niner-modal-prof">${clickedElement.textContent.trim().replace('↗', '').trim()}</span>
             <span class="niner-modal-course">${courseData.subject} ${courseData.courseNumber} - ${courseData.title} · ${courseData.credits} Credits</span>
+            ${meetingLines}       
         </div>
         <button class ="niner-modal-close">✕</button>
     `;
 
     const body = document.createElement('div');
     body.className = 'niner-modal-body';
-
-    const rightCol = document.createElement('div');
-    rightCol.className = 'niner-modal-right';
-
-    const rmpUrl = rmpData
-        ? `https://www.ratemyprofessors.com/professor/${rmpData.legacyId}`
-        : `https://www.ratemyprofessors.com/search/professors/1253?q=${encodeURIComponent(clickedElement.textContent.trim().replace('↗', '').trim())}`;
-
-    const leftCol = document.createElement('div');
-    leftCol.className = 'niner-modal-left';
-    leftCol.innerHTML = `<span class="niner-grade-placeholder"> Grade dist. coming soon</span>`;
-
-
-    rightCol.innerHTML = `
-        <a class="niner-btn" href="${rmpUrl}" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0021FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            <div class="niner-btn-text">
-                <span class="niner-btn-title">RateMyProfessors</span>
-                <span class="niner-btn-sub">Professor Page ↗</span>
-            </div>
-        </a>
-        <a class="niner-btn niner-btn-coursicle" href="https://www.coursicle.com/uncc/courses/${courseData.subject}/${courseData.courseNumber}/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0B7BCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-            <div class="niner-btn-text">
-                <span class="niner-btn-title">Coursicle</span>
-                <span class="niner-btn-sub">Course Overview ↗</span>
-            </div>
-        </a>
-        <button class="niner-btn niner-btn-calendar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <div class="niner-btn-text">
-                <span class="niner-btn-title">Add to Calendar</span>
-            </div>
-        </button>
-    `;
     
     body.appendChild(leftCol);
     body.appendChild(rightCol);
