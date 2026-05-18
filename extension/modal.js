@@ -55,10 +55,18 @@ function openModal(clickedElement, rmpData) {
                 <span class="niner-btn-sub">Course Overview ↗</span>
             </div>
         </a>
+        <button class="niner-btn niner-btn-calendar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <div class="niner-btn-text">
+                <span class="niner-btn-title">Add to Calendar</span>
+            </div>
+        </button>
     `;
     
     body.appendChild(leftCol);
     body.appendChild(rightCol);
+    
+
     
     modalContainer.appendChild(header);
     modalContainer.appendChild(body);

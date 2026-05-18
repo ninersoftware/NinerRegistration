@@ -226,15 +226,15 @@ td[xe-field="instructor"] {
 .niner-modal-close {
     background: none;
     border: none;
-    color: #046A38;
-    font-size: 16px;
+    color: red;
+    font-size: 20px;
     cursor: pointer;
     padding: 0;
     line-height: 1;
 }
 
 .niner-modal-close:hover {
-    color: black;
+    color: darkred;
 }
 
 .niner-modal-body {
@@ -319,3 +319,16 @@ td[xe-field="instructor"] {
     font-weight: 400;
     opacity: 0.7;
 }
+
+.niner-btn-calendar {
+    background: #4CBB17;
+    color: white !important;
+    border-color: #4CBB17;
+}
+
+.niner-btn-calendar:hover {
+    background: #035a2f;
+    border-color: #035a2f;
+    color: white !important;
+}
+
