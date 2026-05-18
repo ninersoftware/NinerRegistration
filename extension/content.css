@@ -191,8 +191,12 @@ td[xe-field="instructor"] {
     min-height: 400px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 24px;
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
 }
 
 .niner-modal-header {
@@ -202,6 +206,10 @@ td[xe-field="instructor"] {
     padding-bottom: 14px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 14px;
+}
+
+.niner-modal-header, .niner-modal-body {
+    padding: 24px;
 }
 
 .niner-modal-title {
@@ -332,3 +340,121 @@ td[xe-field="instructor"] {
     color: white !important;
 }
 
+.niner-modal-tray {
+    padding: 14px 18px 18px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    background: transparent;
+    margin-top: auto;
+}
+
+.niner-tray-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.niner-tray-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(0,0,0,0.45);
+    font-family: 'General-Sans', sans-serif;
+    text-transform: uppercase;
+    padding-left: 4px;
+}
+
+.niner-tray-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.niner-tray-courses {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.niner-tray-courses::-webkit-scrollbar {
+    display: none;
+}
+
+.niner-tray-empty {
+    font-size: 12px;
+    color: rgba(0,0,0,0.35);
+    font-family: 'General-Sans', sans-serif;
+    font-style: italic;
+}
+
+.niner-tray-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    background: #f6fbf8;
+    border: 1px solid rgba(4, 106, 56, 0.25);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #046A38;
+    font-family: 'General-Sans', sans-serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.niner-tray-chip-remove {
+    background: none;
+    border: none;
+    color: rgba(4, 106, 56, 0.5);
+    cursor: pointer;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.niner-tray-chip-remove:hover {
+    color: #046A38;
+}
+
+.niner-tray-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.niner-tray-btn {
+    background: none;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'General-Sans', sans-serif;
+    color: rgba(0,0,0,0.5);
+    transition: all 0.15s;
+}
+
+.niner-tray-btn:hover {
+    border-color: rgba(0,0,0,0.3);
+    color: black;
+}
+
+.niner-tray-btn-export {
+    background: #046A38;
+    border-color: #046A38;
+    color: white;
+}
+
+.niner-tray-btn-export:hover {
+    background: #035a2f;
+    border-color: #035a2f;
+    color: white;
+}

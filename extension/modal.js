@@ -66,12 +66,33 @@ function openModal(clickedElement, rmpData) {
     body.appendChild(leftCol);
     body.appendChild(rightCol);
     
+    const tray = document.createElement('div');
+    tray.className = 'niner-modal-tray';
+    tray.innerHTML = `
+        <div class ="niner-tray-wrapper">
+            <div class="niner-tray-label">Calendar Builder</div>
 
-    
+            <div class="niner-tray-pill">
+                <div class="niner-tray-courses">
+                    <span class="niner-tray-empty">Add courses to build schedule</span>
+                </div>
+
+                <div class="niner-tray-actions">
+                    <button class="niner-tray-btn">↩ Undo</button>
+                    <button class="niner-tray-btn niner-tray-btn-export">⬇ Export .ics</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+
     modalContainer.appendChild(header);
     modalContainer.appendChild(body);
+    modalContainer.appendChild(tray);
+
     overlay.appendChild(modalContainer);
     document.body.appendChild(overlay);
+
 
     header.querySelector('.niner-modal-close').addEventListener('click', () => overlay.remove());
 
