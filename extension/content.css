@@ -165,7 +165,7 @@
     width: 100%;
 }
 
-/td[xe-field="instructor"] {
+td[xe-field="instructor"] {
     overflow: visible !important;
 }
 
@@ -237,8 +237,8 @@
 }
 
 .niner-course {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
     color: rgba(0,0,0,0.45);
     margin-top: 2px;
 }
@@ -284,7 +284,7 @@
 .niner-links {
     display: flex;
     gap: 24px;
-    padding: 16px 24px;
+    padding: 16px 24px 20px 24px;
 }
 
 .niner-link {
@@ -311,10 +311,12 @@
 .niner-tray {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-top: none !important;
-    background: #ffffff !important;
+    gap: 0;
+    margin: 0 24px 12px 24px;
+    background: #f2f2f2;
+    border-radius: 999px;
+    padding: 4px 4px;
+    border: none;
 }
 
 .niner-tray-add {
@@ -322,7 +324,7 @@
     color: white;
     border: none;
     border-radius: 999px;
-    padding: 5px 12px;
+    padding: 5px 14px;
     font-size: 11px;
     font-weight: 700;
     cursor: pointer;
@@ -330,9 +332,6 @@
     white-space: nowrap;
     flex-shrink: 0;
     transition: background 0.15s;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    margin: 0 !important;
 }
 
 .niner-tray-add:hover {
@@ -346,6 +345,7 @@
     overflow-x: auto;
     scrollbar-width: none;
     align-items: center;
+    padding: 0 10px;
 }
 
 .niner-tray-courses::-webkit-scrollbar {
@@ -398,36 +398,34 @@
 
 .niner-tray-btn {
     background: none;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: none;
     border-radius: 999px;
-    padding: 4px 10px;
+    padding: 5px 10px;
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
     font-family: 'General-Sans', sans-serif;
-    color: rgba(0,0,0,0.45);
+    color: rgba(0,0,0,0.4);
     transition: all 0.15s;
     box-shadow: none !important;
-    text-shadow: none !important;
-    border-color: rgba(0, 0, 0, 0.15) !important;
     margin: 0 !important;
 }
 
 .niner-tray-btn:hover {
-    border-color: rgba(0,0,0,0.3);
     color: black;
+    background: rgba(0,0,0,0.06);
 }
 
 .niner-tray-export {
-    background: #046A38;
-    border-color: #046A38;
-    color: white;
+    background: none;
+    border: none;
+    color: #046A38;
+    font-weight: 700;
 }
 
 .niner-tray-export:hover {
-    background: #035a2f;
-    border-color: #035a2f;
-    color: white;
+    background: rgba(4,106,56,0.08);
+    color: #046A38;
 }
 
 .niner-credit {
@@ -436,8 +434,8 @@
     color: rgba(0,0,0,0.15);
     font-family: 'General-Sans', sans-serif;
     text-align: right;
+    padding: 0 24px 12px 24px;
     background: #ffffff !important;
     border: none !important;
     margin: 0 !important;
-    padding: 4px 24px 16px 24px !important;
 }

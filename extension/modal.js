@@ -55,7 +55,7 @@ function openModal(clickedElement, rmpData) {
         <div class="niner-tray">
             <button class="niner-tray-add">+ Add</button>
             <div class="niner-tray-courses">
-                <span class="niner-tray-empty">Add courses to build your schedule</span>
+                <span class="niner-tray-empty"> Add courses to build your calendar export</span>
             </div>
             <div class="niner-tray-actions">
                 <button class="niner-tray-btn niner-tray-undo">↩</button>
