@@ -69,7 +69,6 @@
     color: white;
 }
 
-
 .professor-name {
     color: #2e6da4 !important;
     text-decoration: none !important;
@@ -166,7 +165,7 @@
     width: 100%;
 }
 
-td[xe-field="instructor"] {
+/td[xe-field="instructor"] {
     overflow: visible !important;
 }
 
@@ -176,231 +175,168 @@ td[xe-field="instructor"] {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-
+    background: rgba(0,0,0,0.45);
     display: flex;
     justify-content: center;
     align-items: center;
-
     z-index: 99999;
 }
 
 .niner-modal-container {
-    background: #FFFFFF;
-    width: 600px;
-    min-height: 400px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-
+    background: #ffffff;
+    width: 640px;
+    border-radius: 10px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
-
     overflow: hidden;
+    font-family: 'General-Sans', sans-serif;
 }
 
-.niner-modal-header {
+.niner-topbar {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 24px 24px 16px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    align-items: center;
+    padding: 16px 24px 0 24px;
 }
 
-.niner-modal-header, .niner-modal-body {
-    padding: 24px;
-}
-
-.niner-modal-title {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.niner-modal-prof {
-    font-size: 28px;
-    font-weight: 700;
-    color: #046A38;
-    font-family: 'General-Sans', sans-serif;
-}
-
-.niner-modal-course {
-    font-size: 16px;
-    color: #046A38;
-    font-family: 'General-Sans', sans-serif;
-    margin-top: 2px;
-}
-
-.niner-modal-close {
+.niner-settings-btn,
+.niner-close-btn {
     background: none;
     border: none;
-    color: red;
-    font-size: 20px;
     cursor: pointer;
+    font-size: 18px;
+    color: rgba(0,0,0,0.3);
     padding: 0;
     line-height: 1;
+    transition: color 0.15s;
+    font-family: 'General-Sans', sans-serif;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    margin: 0 !important;
 }
 
-.niner-modal-close:hover {
-    color: darkred;
+.niner-settings-btn:hover,
+.niner-close-btn:hover {
+    color: rgba(0,0,0,0.7);
+}
+
+.niner-header {
+    padding: 12px 24px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.niner-prof {
+    font-size: 26px;
+    font-weight: 700;
+    color: #046A38;
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+}
+
+.niner-course {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.45);
+    margin-top: 2px;
 }
 
 .niner-modal-meeting {
     display: block;
-    font-size: 14px;
-    color: rgba(0,0,0,0.4);
-    font-family: 'General-Sans', sans-serif;
-    margin-top: 3px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.35);
+    margin-top: 1px;
 }
 
-.niner-modal-body {
+.niner-divider {
+    height: 1px;
+    background: transparent !important; /* Keeps structural space but remains invisible */
+    margin: 0 24px;
+}
+
+.niner-grade-section {
     padding: 20px 24px;
-}
-
-.niner-grade-area {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
+    min-height: 160px; /* Keeps space open for future grade components */
     justify-content: center;
-    min-height: 140px;
-    border: 1px dashed rgba(0,0,0,0.1);
-    border-radius: 6px;
-    gap: 6px;
+    align-items: flex-start;
 }
 
-.niner-grade-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+.niner-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(0,0,0,0.25);
-    font-family: 'General-Sans', sans-serif;
 }
 
 .niner-grade-placeholder {
-    color: rgba(0,0,0,0.2);
     font-size: 13px;
-    font-family: 'General-Sans', sans-serif;
     font-style: italic;
+    color: rgba(0,0,0,0.2);
 }
 
-.niner-btn {
+.niner-links {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    border-radius: 4px;
-    background: white;
-    color: #0021FF  !important;
+    gap: 24px;
+    padding: 16px 24px;
+}
+
+.niner-link {
     font-size: 13px;
     font-weight: 600;
+    color: #0021FF !important;
     text-decoration: none !important;
-    border: 1.5px solid #0021FF;
-    cursor: pointer;
-    font-family: 'General-Sans', sans-serif;
-    transition: background 0.15s, color 0.15s;
-    white-space: nowrap;
+    transition: opacity 0.15s;
+    display: inline-block !important;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
-.niner-btn:hover {
-    background: #0021FF;
-    color: white !important;
-}
-
-.niner-btn:hover svg {
-    stroke: white !important;
-}
-
-.niner-btn-coursicle {
-    color: #0B7BCE !important;
-    border-color: #0B7BCE;
-}
-
-.niner-btn-coursicle:hover {
-    background: #0B7BCE;
-    color: white !important;
-}
-
-.niner-btn-row {
-    display: flex;
-    gap: 8px;
-    padding: 0 24px;
-}
-
-.niner-btn-row .niner-btn {
-    flex: 1;
-}
-
-.niner-cal-row {
-    padding: 8px 24px 16px 24px;
-}
-
-.niner-btn-full {
-    width: 100%;
-    justify-content: center;
-}
-
-.niner-btn-text {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-.niner-btn-title {
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.niner-btn-sub {
-    font-size: 10px;
-    font-weight: 400;
+.niner-link:hover {
     opacity: 0.7;
 }
 
-.niner-btn-calendar {
-    background: #046A38;
-    color: white !important;
-    border-color: #046A38;
+.niner-link-coursicle {
+    color: #0B7BCE !important;
 }
 
-.niner-btn-calendar:hover {
-    background: #035a2f;
-    border-color: #035a2f;
-    color: white !important;
-}
-
-.niner-modal-tray {
-    padding: 14px 18px 18px;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    background: transparent;
-    margin-top: auto;
-}
-
-.niner-tray-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.niner-tray-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: rgba(0,0,0,0.45);
-    font-family: 'General-Sans', sans-serif;
-    text-transform: uppercase;
-    padding-left: 4px;
-}
-
-.niner-tray-pill {
+.niner-tray {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
+    gap: 8px;
+    padding: 10px 16px;
+    border-top: none !important;
+    background: #ffffff !important;
+}
+
+.niner-tray-add {
+    background: #046A38;
+    color: white;
+    border: none;
     border-radius: 999px;
-    background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.12);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'General-Sans', sans-serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+}
+
+.niner-tray-add:hover {
+    background: #035a2f;
 }
 
 .niner-tray-courses {
@@ -409,6 +345,7 @@ td[xe-field="instructor"] {
     flex: 1;
     overflow-x: auto;
     scrollbar-width: none;
+    align-items: center;
 }
 
 .niner-tray-courses::-webkit-scrollbar {
@@ -416,35 +353,36 @@ td[xe-field="instructor"] {
 }
 
 .niner-tray-empty {
-    font-size: 12px;
-    color: rgba(0,0,0,0.35);
-    font-family: 'General-Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(0,0,0,0.25);
     font-style: italic;
+    font-family: 'General-Sans', sans-serif;
+    white-space: nowrap;
 }
 
 .niner-tray-chip {
     display: flex;
     align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    background: #f6fbf8;
-    border: 1px solid rgba(4, 106, 56, 0.25);
+    gap: 4px;
+    padding: 3px 8px;
+    background: #f0f7f3;
+    border: 1px solid rgba(4,106,56,0.2);
     border-radius: 999px;
     font-size: 11px;
     font-weight: 600;
     color: #046A38;
-    font-family: 'General-Sans', sans-serif;
     white-space: nowrap;
     flex-shrink: 0;
+    font-family: 'General-Sans', sans-serif;
 }
 
 .niner-tray-chip-remove {
     background: none;
     border: none;
-    color: rgba(4, 106, 56, 0.5);
+    color: rgba(4,106,56,0.4);
     cursor: pointer;
     padding: 0;
-    font-size: 11px;
+    font-size: 10px;
     line-height: 1;
 }
 
@@ -467,8 +405,12 @@ td[xe-field="instructor"] {
     font-weight: 600;
     cursor: pointer;
     font-family: 'General-Sans', sans-serif;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0,0,0,0.45);
     transition: all 0.15s;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    margin: 0 !important;
 }
 
 .niner-tray-btn:hover {
@@ -476,13 +418,13 @@ td[xe-field="instructor"] {
     color: black;
 }
 
-.niner-tray-btn-export {
+.niner-tray-export {
     background: #046A38;
     border-color: #046A38;
     color: white;
 }
 
-.niner-tray-btn-export:hover {
+.niner-tray-export:hover {
     background: #035a2f;
     border-color: #035a2f;
     color: white;
@@ -491,8 +433,11 @@ td[xe-field="instructor"] {
 .niner-credit {
     font-size: 9px;
     font-style: italic;
-    color: rgba(0,0,0,0.2);
+    color: rgba(0,0,0,0.15);
     font-family: 'General-Sans', sans-serif;
     text-align: right;
-    padding: 0 20px 6px 20px;
+    background: #ffffff !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 4px 24px 16px 24px !important;
 }

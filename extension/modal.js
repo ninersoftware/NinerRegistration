@@ -6,6 +6,8 @@ function openModal(clickedElement, rmpData) {
 
     const courseData = parseCourseRow(clickedElement);
 
+    const profName = clickedElement.textContent.trim().replace('↗', '').trim();
+
     const overlay = document.createElement('div');
     overlay.id = 'niner-registration-modal';
     overlay.className = 'niner-modal-overlay';
@@ -15,98 +17,60 @@ function openModal(clickedElement, rmpData) {
 
     const meetingLines = courseData.meetings.map(m => {
         const days = m.days.map(d => d.slice(0,3)).join('/');
-        return `<span class <"niner-modal-meeting">${days} ${m.time} · ${m.building} ${m.room}</span>`;
+        return `<span class="niner-modal-meeting">${days} ${m.time} · ${m.building} ${m.room}</span>`;
     }).join('');
 
     const rmpUrl = rmpData
         ? `https://www.ratemyprofessors.com/professor/${rmpData.legacyId}`
         : `https://www.ratemyprofessors.com/search/professors/1253?q=${encodeURIComponent(clickedElement.textContent.trim().replace('↗', '').trim())}`;
 
-    const header = document.createElement('div');
-    header.className = 'niner-modal-header';
-    header.innerHTML = `
-        <div class="niner-modal-title">
-            <span class="niner-modal-prof">${clickedElement.textContent.trim().replace('↗', '').trim()}</span>
-            <span class="niner-modal-course">${courseData.subject} ${courseData.courseNumber} - ${courseData.title} · ${courseData.credits} Credits</span>
-            ${meetingLines}       
+    modalContainer.innerHTML = `
+        <div class="niner-topbar">
+            <button class="niner-settings-btn">⚙</button>
+            <button class="niner-close-btn">✕</button>
         </div>
-        <button class ="niner-modal-close">✕</button>
-    `;
 
-    const body = document.createElement('div');
-    body.className = 'niner-modal-body';
-    body.innerHTML = `
-        <div class="niner-grade-area">
-            <span class="niner-grade-label">Grade Distribution</span>
-            <span class="niner-grade-placeholder">Coming soon</span>
+        <div class="niner-header">
+            <div class="niner-prof">${profName}</div>
+            <div class="niner-course">${courseData.subject} ${courseData.courseNumber}  ·  ${courseData.credits} Credits</div>
+            ${meetingLines}
         </div>
-    `;
 
-    const btnRow = document.createElement('div');
-    btnRow.className = 'niner-btn-row';
-    btnRow.innerHTML = `
-        <a class="niner-btn" href="${rmpUrl}" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0021FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                <div class="niner-btn-text">
-                    <span class="niner-btn-title">RateMyProfessors</span>
-                    <span class="niner-btn-sub">Professor Page ↗</span>
-                </div>
-            </a>
-            <a class="niner-btn niner-btn-coursicle" href="https://www.coursicle.com/uncc/courses/${courseData.subject}/${courseData.courseNumber}/" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0B7BCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                <div class="niner-btn-text">
-                    <span class="niner-btn-title">Coursicle</span>
-                    <span class="niner-btn-sub">Course Overview ↗</span>
-                </div>
-            </a>
-    `;
+        <div class="niner-divider"></div>
 
-    const calBtn = document.createElement('div');
-    calBtn.className = 'niner-cal-row';
-    calBtn.innerHTML = `
-        <button class="niner-btn niner-btn-calendar niner-btn-full">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <div class="niner-btn-text">
-                <span class="niner-btn-title">Add to Calendar Builder</span>
+        <div class="niner-grade-section">
+            <div class="niner-section-label">Grade Distribution</div>
+            <div class="niner-grade-placeholder">Coming soon</div>
+        </div>
+
+        <div class="niner-divider"></div>
+
+        <div class="niner-links">
+            <a class="niner-link" href="${rmpUrl}" target="_blank">RateMyProfessors ↗</a>
+            <a class="niner-link niner-link-coursicle" href="https://www.coursicle.com/uncc/courses/${courseData.subject}/${courseData.courseNumber}/" target="_blank">Coursicle ↗</a>
+        </div>
+
+        <div class="niner-divider"></div>
+
+        <div class="niner-tray">
+            <button class="niner-tray-add">+ Add</button>
+            <div class="niner-tray-courses">
+                <span class="niner-tray-empty">Add courses to build your schedule</span>
             </div>
-        </button>
-    `;
-    
-    const tray = document.createElement('div');
-    tray.className = 'niner-modal-tray';
-    tray.innerHTML = `
-        <div class ="niner-tray-wrapper">
-            <div class="niner-tray-label">Calendar Builder</div>
-
-            <div class="niner-tray-pill">
-                <div class="niner-tray-courses">
-                    <span class="niner-tray-empty">Add courses to build schedule</span>
-                </div>
-
-                <div class="niner-tray-actions">
-                    <button class="niner-tray-btn">↩ Undo</button>
-                    <button class="niner-tray-btn niner-tray-btn-export">⬇ .ics</button>
-                </div>
+            <div class="niner-tray-actions">
+                <button class="niner-tray-btn niner-tray-undo">↩</button>
+                <button class="niner-tray-btn niner-tray-export">⬇ .ics</button>
             </div>
         </div>
+
+        <div class="niner-credit">© 2026 ninersoftware</div>    
     `;
 
-    const credit = document.createElement('div');
-    credit.className = 'niner-credit';
-    credit.innerHTML = '2026 ninersoftware'
-
-
-    modalContainer.appendChild(header);
-    modalContainer.appendChild(body);
-    modalContainer.appendChild(btnRow);
-    modalContainer.appendChild(calBtn);
-    modalContainer.appendChild(tray);
-    modalContainer.appendChild(credit);
     overlay.appendChild(modalContainer);
     document.body.appendChild(overlay);
 
 
-    header.querySelector('.niner-modal-close').addEventListener('click', () => overlay.remove());
+    modalContainer.querySelector('.niner-close-btn').addEventListener('click', () => overlay.remove());
 
     overlay.addEventListener('click', (event) => {
         if (event.target === overlay) {
