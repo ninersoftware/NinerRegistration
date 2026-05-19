@@ -35,9 +35,42 @@ function openModal(clickedElement, rmpData) {
 
     const body = document.createElement('div');
     body.className = 'niner-modal-body';
-    
-    body.appendChild(leftCol);
-    body.appendChild(rightCol);
+    body.innerHTML = `
+        <div class="niner-grade-area">
+            <span class="niner-grade-label">Grade Distribution</span>
+            <span class="niner-grade-placeholder">Coming soon</span>
+        </div>
+    `;
+
+    const btnRow = document.createElement('div');
+    btnRow.className = 'niner-btn-row';
+    btnRow.innerHTML = `
+        <a class="niner-btn" href="${rmpUrl}" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0021FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <div class="niner-btn-text">
+                    <span class="niner-btn-title">RateMyProfessors</span>
+                    <span class="niner-btn-sub">Professor Page ↗</span>
+                </div>
+            </a>
+            <a class="niner-btn niner-btn-coursicle" href="https://www.coursicle.com/uncc/courses/${courseData.subject}/${courseData.courseNumber}/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0B7BCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <div class="niner-btn-text">
+                    <span class="niner-btn-title">Coursicle</span>
+                    <span class="niner-btn-sub">Course Overview ↗</span>
+                </div>
+            </a>
+    `;
+
+    const calBtn = document.createElement('div');
+    calBtn.className = 'niner-cal-row';
+    calBtn.innerHTML = `
+        <button class="niner-btn niner-btn-calendar niner-btn-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <div class="niner-btn-text">
+                <span class="niner-btn-title">Add to Calendar Builder</span>
+            </div>
+        </button>
+    `;
     
     const tray = document.createElement('div');
     tray.className = 'niner-modal-tray';
@@ -52,7 +85,7 @@ function openModal(clickedElement, rmpData) {
 
                 <div class="niner-tray-actions">
                     <button class="niner-tray-btn">↩ Undo</button>
-                    <button class="niner-tray-btn niner-tray-btn-export">⬇ Export .ics</button>
+                    <button class="niner-tray-btn niner-tray-btn-export">⬇</button>
                 </div>
             </div>
         </div>
@@ -61,8 +94,9 @@ function openModal(clickedElement, rmpData) {
 
     modalContainer.appendChild(header);
     modalContainer.appendChild(body);
+    modalContainer.appendChild(btnRow);
+    modalContainer.appendChild(calBtn);
     modalContainer.appendChild(tray);
-
     overlay.appendChild(modalContainer);
     document.body.appendChild(overlay);
 

@@ -203,9 +203,8 @@ td[xe-field="instructor"] {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding-bottom: 14px;
+    padding: 24px 24px 16px 24px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 14px;
 }
 
 .niner-modal-header, .niner-modal-body {
@@ -219,16 +218,17 @@ td[xe-field="instructor"] {
 }
 
 .niner-modal-prof {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
     color: #046A38;
     font-family: 'General-Sans', sans-serif;
 }
 
 .niner-modal-course {
-    font-size: 18px;
+    font-size: 16px;
     color: #046A38;
     font-family: 'General-Sans', sans-serif;
+    margin-top: 2px;
 }
 
 .niner-modal-close {
@@ -245,19 +245,36 @@ td[xe-field="instructor"] {
     color: darkred;
 }
 
-.niner-modal-body {
-    display: flex;
-    gap: 16px;
+.niner-modal-meeting {
+    display: block;
+    font-size: 14px;
+    color: rgba(0,0,0,0.4);
+    font-family: 'General-Sans', sans-serif;
+    margin-top: 3px;
 }
 
-.niner-modal-left {
-    flex: 1;
+.niner-modal-body {
+    padding: 20px 24px;
+}
+
+.niner-grade-area {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 150px;
-    border-right: 1px solid rgba(0,0,0,0.08);
-    padding-right: 16px;
+    min-height: 140px;
+    border: 1px dashed rgba(0,0,0,0.1);
+    border-radius: 6px;
+    gap: 6px;
+}
+
+.niner-grade-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.25);
+    font-family: 'General-Sans', sans-serif;
 }
 
 .niner-grade-placeholder {
@@ -265,13 +282,6 @@ td[xe-field="instructor"] {
     font-size: 13px;
     font-family: 'General-Sans', sans-serif;
     font-style: italic;
-}
-
-.niner-modal-right {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 150px;
 }
 
 .niner-btn {
@@ -311,6 +321,25 @@ td[xe-field="instructor"] {
     color: white !important;
 }
 
+.niner-btn-row {
+    display: flex;
+    gap: 8px;
+    padding: 0 24px;
+}
+
+.niner-btn-row .niner-btn {
+    flex: 1;
+}
+
+.niner-cal-row {
+    padding: 8px 24px 16px 24px;
+}
+
+.niner-btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
 .niner-btn-text {
     display: flex;
     flex-direction: column;
@@ -329,9 +358,9 @@ td[xe-field="instructor"] {
 }
 
 .niner-btn-calendar {
-    background: #4CBB17;
+    background: #046A38;
     color: white !important;
-    border-color: #4CBB17;
+    border-color: #046A38;
 }
 
 .niner-btn-calendar:hover {
