@@ -85,11 +85,15 @@ function openModal(clickedElement, rmpData) {
 
                 <div class="niner-tray-actions">
                     <button class="niner-tray-btn">↩ Undo</button>
-                    <button class="niner-tray-btn niner-tray-btn-export">⬇</button>
+                    <button class="niner-tray-btn niner-tray-btn-export">⬇ .ics</button>
                 </div>
             </div>
         </div>
     `;
+
+    const credit = document.createElement('div');
+    credit.className = 'niner-credit';
+    credit.innerHTML = '2026 ninersoftware'
 
 
     modalContainer.appendChild(header);
@@ -97,6 +101,7 @@ function openModal(clickedElement, rmpData) {
     modalContainer.appendChild(btnRow);
     modalContainer.appendChild(calBtn);
     modalContainer.appendChild(tray);
+    modalContainer.appendChild(credit);
     overlay.appendChild(modalContainer);
     document.body.appendChild(overlay);
 
