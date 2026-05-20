@@ -1,3 +1,61 @@
+function openSettings(currentModal) {
+    const existing = document.getElementById('niner-settings-modal');
+    if (existing) { existing.remove(); return; }
+
+    const settings = document.createElement('div');
+    settings.id = 'niner-settings-modal';
+    settings.className = 'niner-settings-overlay';
+    settings.innerHTML = `
+        <div class="niner-settings-panel">
+            <div class="niner-settings-header">
+                <span class="niner-settings-title">Settings</span>
+                <button class="niner-settings-close">✕</button>
+            </div>
+            <div class="niner-settings-section">
+                <span class="niner-settings-label">THEME</span>
+                <div class="niner-theme-options">
+                    <button class="niner-theme-btn" data-theme="white">White</button>
+                    <button class="niner-theme-btn" data-theme="dark">Black</button>
+                    <button class="niner-theme-btn" data-theme="green">Green</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(settings);
+
+    // mark active theme
+    chrome.storage.local.get('ninerTheme', (result) => {
+        const current = result.ninerTheme || 'white';
+        settings.querySelectorAll('.niner-theme-btn').forEach(btn => {
+            if (btn.getAttribute('data-theme') === current) {
+                btn.classList.add('niner-theme-btn-active');
+            }
+        });
+    });
+
+    // theme selection
+    settings.querySelectorAll('.niner-theme-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.getAttribute('data-theme');
+            chrome.storage.local.set({ ninerTheme: theme });
+            applyTheme(currentModal, theme);
+            settings.querySelectorAll('.niner-theme-btn').forEach(b => b.classList.remove('niner-theme-btn-active'));
+            btn.classList.add('niner-theme-btn-active');
+        });
+    });
+
+    settings.querySelector('.niner-settings-close').addEventListener('click', () => settings.remove());
+    settings.addEventListener('click', (e) => { if (e.target === settings) settings.remove(); });
+}
+
+function applyTheme(modalContainer, theme) {
+    modalContainer.classList.remove('niner-theme-white', 'niner-theme-dark', 'niner-theme-green');
+    modalContainer.classList.add(`niner-theme-${theme}`);
+}
+
+
+
 function openModal(clickedElement, rmpData) {
     const existingModal = document.getElementById('niner-registration-modal');
     if (existingModal) {
@@ -13,7 +71,12 @@ function openModal(clickedElement, rmpData) {
     overlay.className = 'niner-modal-overlay';
 
     const modalContainer = document.createElement('div');
+
     modalContainer.className = 'niner-modal-container';
+    chrome.storage.local.get('ninerTheme', (result) => {
+        const theme = result.ninerTheme || 'white';
+        applyTheme(modalContainer, theme);
+    });
 
     const meetingLines = courseData.meetings.map(m => {
         const days = m.days.map(d => d.slice(0,3)).join('/');
@@ -71,6 +134,10 @@ function openModal(clickedElement, rmpData) {
 
 
     modalContainer.querySelector('.niner-close-btn').addEventListener('click', () => overlay.remove());
+
+    modalContainer.querySelector('.niner-settings-btn').addEventListener('click', () => {
+    openSettings(modalContainer);
+    });
 
     overlay.addEventListener('click', (event) => {
         if (event.target === overlay) {

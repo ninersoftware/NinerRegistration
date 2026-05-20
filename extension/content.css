@@ -435,7 +435,167 @@ td[xe-field="instructor"] {
     font-family: 'General-Sans', sans-serif;
     text-align: right;
     padding: 0 24px 12px 24px;
-    background: #ffffff !important;
     border: none !important;
     margin: 0 !important;
 }
+
+/*settings*/
+
+.niner-settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.niner-settings-panel {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 260px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    font-family: 'General-Sans', sans-serif;
+}
+
+.niner-settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.niner-settings-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.7);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.niner-settings-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(0,0,0,0.3);
+    padding: 0;
+    transition: color 0.15s;
+}
+
+.niner-settings-close:hover {
+    color: rgba(0,0,0,0.7);
+}
+
+.niner-settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.niner-settings-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.25);
+}
+
+.niner-theme-options {
+    display: flex;
+    gap: 8px;
+}
+
+.niner-theme-btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 6px;
+    border: 1.5px solid rgba(0,0,0,0.12);
+    background: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'General-Sans', sans-serif;
+    color: rgba(0,0,0,0.5);
+    transition: all 0.15s;
+}
+
+.niner-theme-btn:hover {
+    border-color: #046A38;
+    color: #046A38;
+}
+
+.niner-theme-btn-active {
+    border-color: #046A38;
+    color: #046A38;
+    background: #f0f7f3;
+}
+
+.niner-theme-white {
+    background: #ffffff;
+}
+
+.niner-theme-white .niner-prof { color: #046A38; }
+.niner-theme-white .niner-course { color: rgba(0,0,0,0.45); }
+.niner-theme-white .niner-modal-meeting { color: rgba(0,0,0,0.35); }
+.niner-theme-white .niner-divider { background: rgba(0,0,0,0.07); }
+.niner-theme-white .niner-section-label { color: rgba(0,0,0,0.25); }
+.niner-theme-white .niner-grade-placeholder { color: rgba(0,0,0,0.2); }
+.niner-theme-white .niner-link { color: #0021FF !important; }
+.niner-theme-white .niner-link-coursicle { color: #0B7BCE !important; }
+.niner-theme-white .niner-tray { background: #f2f2f2; }
+.niner-theme-white .niner-tray-empty { color: rgba(0,0,0,0.25); }
+.niner-theme-white .niner-tray-btn { color: rgba(0,0,0,0.4); }
+.niner-theme-white .niner-settings-btn,
+.niner-theme-white .niner-close-btn { color: rgba(0,0,0,0.3); }
+.niner-theme-white .niner-credit { color: rgba(0,0,0,0.15); }
+
+.niner-theme-dark {
+    background: #101820;
+}
+
+.niner-theme-dark .niner-prof { color: #ffffff; }
+.niner-theme-dark .niner-course { color: rgba(255,255,255,0.45); }
+.niner-theme-dark .niner-modal-meeting { color: rgba(255,255,255,0.35); }
+.niner-theme-dark .niner-divider { background: rgba(255,255,255,0.07); }
+.niner-theme-dark .niner-section-label { color: rgba(255,255,255,0.25); }
+.niner-theme-dark .niner-grade-placeholder { color: rgba(255,255,255,0.2); }
+.niner-theme-dark .niner-link { color: #7b9fff !important; }
+.niner-theme-dark .niner-link-coursicle { color: #5eb8ff !important; }
+.niner-theme-dark .niner-tray { background: #1e2a35; }
+.niner-theme-dark .niner-tray-empty { color: rgba(255,255,255,0.25); }
+.niner-theme-dark .niner-tray-btn { color: rgba(255,255,255,0.4); }
+.niner-theme-dark .niner-tray-btn:hover { color: white; background: rgba(255,255,255,0.08); }
+.niner-theme-dark .niner-tray-add { background: #046A38; }
+.niner-theme-dark .niner-settings-btn,
+.niner-theme-dark .niner-close-btn { color: rgba(255,255,255,0.3); }
+.niner-theme-dark .niner-settings-btn:hover,
+.niner-theme-dark .niner-close-btn:hover { color: rgba(255,255,255,0.8); }
+.niner-theme-dark .niner-credit { color: rgba(255,255,255,0.15); }
+
+.niner-theme-green {
+    background: #046A38;
+}
+
+.niner-theme-green .niner-prof { color: #ffffff; }
+.niner-theme-green .niner-course { color: rgba(255,255,255,0.6); }
+.niner-theme-green .niner-modal-meeting { color: rgba(255,255,255,0.5); }
+.niner-theme-green .niner-divider { background: rgba(255,255,255,0.15); }
+.niner-theme-green .niner-section-label { color: rgba(255,255,255,0.4); }
+.niner-theme-green .niner-grade-placeholder { color: rgba(255,255,255,0.3); }
+.niner-theme-green .niner-link { color: rgba(255,255,255,0.9) !important; }
+.niner-theme-green .niner-link-coursicle { color: rgba(255,255,255,0.9) !important; }
+.niner-theme-green .niner-tray { background: #035a2f; }
+.niner-theme-green .niner-tray-empty { color: rgba(255,255,255,0.3); }
+.niner-theme-green .niner-tray-btn { color: rgba(255,255,255,0.5); }
+.niner-theme-green .niner-tray-btn:hover { color: white; background: rgba(255,255,255,0.1); }
+.niner-theme-green .niner-tray-add { background: rgba(255,255,255,0.15); color: white; }
+.niner-theme-green .niner-tray-add:hover { background: rgba(255,255,255,0.25); }
+.niner-theme-green .niner-tray-export { color: white; }
+.niner-theme-green .niner-settings-btn,
+.niner-theme-green .niner-close-btn { color: rgba(255,255,255,0.5); }
+.niner-theme-green .niner-settings-btn:hover,
+.niner-theme-green .niner-close-btn:hover { color: white; }
+.niner-theme-green .niner-credit { color: rgba(255,255,255,0.2); }
