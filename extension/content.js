@@ -47,26 +47,37 @@ function injectOverview(cell, data, originalName) {
     cell.appendChild(overview);
 
     chrome.storage.local.get('ninerTheme', (result) => {
-        const theme = result.ninerTheme || 'white';
-        const stats = overview.querySelector('.professor-stats');
-        if (theme === 'dark') {
-            stats.style.background = '#101820';
-            stats.style.color = 'white';
-        } else if (theme === 'green') {
-            stats.style.background = '#046A38';
-            stats.style.color = 'white';
-        } else {
-            stats.style.background = '#ffffff';
-            stats.style.color = '#000000';
-            stats.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
-            const fullName = stats.querySelector('.professor-full-name');
-            const details = stats.querySelectorAll('.rating-details span');
-            const header = stats.querySelector('.professor-header');
-            if (fullName) fullName.style.color = '#046A38';
-            if (header) header.style.borderBottomColor = 'rgba(0,0,0,0.1)';
-            details.forEach(s => s.style.color = 'rgba(0,0,0,0.6)');
-        }
-    });
+    const theme = result.ninerTheme || 'white';
+    const stats = overview.querySelector('.professor-stats');
+    const fullName = stats.querySelector('.professor-full-name');
+    const details = stats.querySelectorAll('.rating-details span');
+    const header = stats.querySelector('.professor-header');
+    const lastReview = stats.querySelector('.last-review');
+
+    if (theme === 'dark') {
+        stats.style.background = '#101820';
+        stats.style.color = '#ffffff';
+        if (fullName) fullName.style.color = '#ffffff';
+        if (header) header.style.borderBottomColor = 'rgba(255,255,255,0.15)';
+        details.forEach(s => s.style.color = '#ffffff');
+        if (lastReview) lastReview.style.color = 'rgba(255,255,255,0.6)';
+    } else if (theme === 'green') {
+        stats.style.background = '#046A38';
+        stats.style.color = '#ffffff';
+        if (fullName) fullName.style.color = '#ffffff';
+        if (header) header.style.borderBottomColor = 'rgba(255,255,255,0.15)';
+        details.forEach(s => s.style.color = '#ffffff');
+        if (lastReview) lastReview.style.color = 'rgba(255,255,255,0.6)';
+    } else { // White theme
+        stats.style.background = '#ffffff';
+        stats.style.color = '#000000';
+        stats.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+        if (fullName) fullName.style.color = '#000000';
+        if (header) header.style.borderBottomColor = 'rgba(0,0,0,0.1)';
+        details.forEach(s => s.style.color = '#000000');
+        if (lastReview) lastReview.style.color = 'rgba(0,0,0,0.6)';
+    }
+});
 
     const link = overview.querySelector('.professor-name');
     link.style.setProperty('color', '#2e6da4', 'important');
@@ -121,24 +132,35 @@ function injectNotFound(cell, name) {
     chrome.storage.local.get('ninerTheme', (result) => {
     const theme = result.ninerTheme || 'white';
     const stats = overview.querySelector('.professor-stats');
+    const fullName = stats.querySelector('.professor-full-name');
+    const details = stats.querySelectorAll('.rating-details span');
+    const header = stats.querySelector('.professor-header');
+    const lastReview = stats.querySelector('.last-review');
+
     if (theme === 'dark') {
         stats.style.background = '#101820';
-        stats.style.color = 'white';
+        stats.style.color = '#ffffff';
+        if (fullName) fullName.style.color = '#ffffff';
+        if (header) header.style.borderBottomColor = 'rgba(255,255,255,0.15)';
+        details.forEach(s => s.style.color = '#ffffff');
+        if (lastReview) lastReview.style.color = 'rgba(255,255,255,0.6)';
     } else if (theme === 'green') {
         stats.style.background = '#046A38';
-        stats.style.color = 'white';
-    } else {
+        stats.style.color = '#ffffff';
+        if (fullName) fullName.style.color = '#ffffff';
+        if (header) header.style.borderBottomColor = 'rgba(255,255,255,0.15)';
+        details.forEach(s => s.style.color = '#ffffff');
+        if (lastReview) lastReview.style.color = 'rgba(255,255,255,0.6)';
+    } else { // White theme
         stats.style.background = '#ffffff';
         stats.style.color = '#000000';
         stats.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
-        const fullName = stats.querySelector('.professor-full-name');
-        const details = stats.querySelectorAll('.rating-details span');
-        const header = stats.querySelector('.professor-header');
-        if (fullName) fullName.style.color = '#046A38';
+        if (fullName) fullName.style.color = '#000000';
         if (header) header.style.borderBottomColor = 'rgba(0,0,0,0.1)';
-        details.forEach(s => s.style.color = 'rgba(0,0,0,0.6)');
+        details.forEach(s => s.style.color = '#000000');
+        if (lastReview) lastReview.style.color = 'rgba(0,0,0,0.6)';
     }
-    });
+});
 
     overview.addEventListener('click', (event) => {
         event.preventDefault();
@@ -203,36 +225,35 @@ chrome.storage.local.onChanged.addListener((changes) => {
     if (changes.ninerTheme) {
         const theme = changes.ninerTheme.newValue || 'white';
         document.querySelectorAll('.professor-stats').forEach(stats => {
+            const fullName = stats.querySelector('.professor-full-name');
+            const details = stats.querySelectorAll('.rating-details span');
+            const header = stats.querySelector('.professor-header');
+            const lastReview = stats.querySelector('.last-review');
+
             if (theme === 'dark') {
                 stats.style.background = '#101820';
-                stats.style.color = 'white';
+                stats.style.color = '#ffffff';
                 stats.style.boxShadow = '0 4px 16px rgba(0,0,0,0.3)';
-                const fullName = stats.querySelector('.professor-full-name');
-                const details = stats.querySelectorAll('.rating-details span');
-                const header = stats.querySelector('.professor-header');
-                if (fullName) fullName.style.color = 'white';
+                if (fullName) fullName.style.color = '#ffffff';
                 if (header) header.style.borderBottomColor = 'rgba(255,255,255,0.15)';
-                details.forEach(s => s.style.color = '#e0e0e0');
+                details.forEach(s => s.style.color = '#ffffff');
+                if (lastReview) lastReview.style.color = 'rgba(255,255,255,0.6)';
             } else if (theme === 'green') {
                 stats.style.background = '#046A38';
-                stats.style.color = 'white';
+                stats.style.color = '#ffffff';
                 stats.style.boxShadow = '0 4px 16px rgba(0,0,0,0.3)';
-                const fullName = stats.querySelector('.professor-full-name');
-                const details = stats.querySelectorAll('.rating-details span');
-                const header = stats.querySelector('.professor-header');
-                if (fullName) fullName.style.color = 'white';
+                if (fullName) fullName.style.color = '#ffffff';
                 if (header) header.style.borderBottomColor = 'rgba(255,255,255,0.15)';
-                details.forEach(s => s.style.color = 'rgba(255,255,255,0.8)');
-            } else {
+                details.forEach(s => s.style.color = '#ffffff');
+                if (lastReview) lastReview.style.color = 'rgba(255,255,255,0.6)';
+            } else { // White theme
                 stats.style.background = '#ffffff';
                 stats.style.color = '#000000';
                 stats.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
-                const fullName = stats.querySelector('.professor-full-name');
-                const details = stats.querySelectorAll('.rating-details span');
-                const header = stats.querySelector('.professor-header');
-                if (fullName) fullName.style.color = '#046A38';
+                if (fullName) fullName.style.color = '#000000';
                 if (header) header.style.borderBottomColor = 'rgba(0,0,0,0.1)';
-                details.forEach(s => s.style.color = 'rgba(0,0,0,0.6)');
+                details.forEach(s => s.style.color = '#000000');
+                if (lastReview) lastReview.style.color = 'rgba(0,0,0,0.6)';
             }
         });
     }
